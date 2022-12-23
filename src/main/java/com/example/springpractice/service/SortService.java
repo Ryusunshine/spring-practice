@@ -2,14 +2,17 @@ package com.example.springpractice.service;
 
 import com.example.springpractice.logic.JavaSort;
 import com.example.springpractice.logic.Sort;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service // Component랑 똑같은 기능을 하는 어노테이션
 public class SortService {
 
     private final Sort<String> sort; //필드에다가 주입하고싶은 애를 넣는다.
 
-    public SortService(JavaSort<String> sort){// 의존성 주입방식 = 생성자 주입
+    public SortService(@Qualifier("javaSort") Sort<String> sort){// 의존성 주입방식 = 생성자 주입
         this.sort = sort;
     }
 
